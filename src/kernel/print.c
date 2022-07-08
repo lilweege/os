@@ -13,3 +13,9 @@ void print_cstr(u16* x, u16* y, const char* s) {
         }
     }
 }
+
+void print_num(u16* x, u16* y, i32 n) {
+    static char b[32];
+    itoa(n, b);
+    print_cstr(x, y, b);
+}

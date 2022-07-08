@@ -11,8 +11,8 @@
 extern u8 _sbuff[2][SCREEN_SIZE];
 extern u8 _sbuff_front;
 
-void screen_init();
-void screen_swap_buffers();
+void screen_init(void);
+void screen_swap_buffers(void);
 
 #define screen_set_px(x, y, col) _sbuff[_sbuff_front][(y)*SCREEN_WIDTH+(x)] = (col)
 //#define screen_set_px(x, y, col) ((u8*)0xA0000)[(y)*SCREEN_WIDTH+(x)] = (col)

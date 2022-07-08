@@ -26,5 +26,6 @@ void itoa(i32 x, char* s) {
     if (neg)
         buf[i--] = '-';
     ++i;
+    s[sz-i] = 0;
     memcpy(s, buf+i, sz-i);
 }

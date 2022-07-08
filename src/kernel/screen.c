@@ -11,26 +11,26 @@ u8 _sbuff_front = 0;
 #define PALETTE_WRITE  0x3C8
 #define PALETTE_DATA   0x3C9
 
-static void screen_configure_palette() {
+static void screen_configure_palette(void) {
     // 8-bit RRRGGGBB color
-    port_byte_out(PALETTE_MASK, 0xFF);
-    port_byte_out(PALETTE_WRITE, 0);
+    outb(PALETTE_MASK, 0xFF);
+    outb(PALETTE_WRITE, 0);
     for (i32 i = 0; i < 255; ++i) {
-        port_byte_out(PALETTE_DATA, (((i >> 5) & 0x7) * (256 / 8)) / 4);
-        port_byte_out(PALETTE_DATA, (((i >> 2) & 0x7) * (256 / 8)) / 4);
-        port_byte_out(PALETTE_DATA, (((i >> 0) & 0x3) * (256 / 4)) / 4);
+        outb(PALETTE_DATA, (((i >> 5) & 0x7) * (256 / 8)) / 4);
+        outb(PALETTE_DATA, (((i >> 2) & 0x7) * (256 / 8)) / 4);
+        outb(PALETTE_DATA, (((i >> 0) & 0x3) * (256 / 4)) / 4);
     }
     // set color 255 = white
-    port_byte_out(PALETTE_DATA, 0x3F);
-    port_byte_out(PALETTE_DATA, 0x3F);
-    port_byte_out(PALETTE_DATA, 0x3F);
+    outb(PALETTE_DATA, 0x3F);
+    outb(PALETTE_DATA, 0x3F);
+    outb(PALETTE_DATA, 0x3F);
 }
 
-void screen_swap_buffers() {
+void screen_swap_buffers(void) {
     memcpy(VGA_OFFSET, &_sbuff[_sbuff_front], SCREEN_SIZE);
     _sbuff_front ^= 1;
 }
 
-void screen_init() {
+void screen_init(void) {
     screen_configure_palette();
 }

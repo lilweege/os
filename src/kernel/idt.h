@@ -27,7 +27,7 @@ typedef struct {
 extern idt_entry_t idt[NUM_IDT_ENTRIES];
 extern idt_register_t idrt;
 
-void idt_load();
+void idt_load(void);
 void idt_set_entry(u8 vector, void* isr, u8 flags);
 
 #endif // IDT_H_

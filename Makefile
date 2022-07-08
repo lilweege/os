@@ -6,7 +6,7 @@ ASM_SOURCES = $(wildcard $(SRC)/kernel/*.asm)
 C_SOURCES = $(wildcard $(SRC)/kernel/*.c)
 HEADERS = $(wildcard $(SRC)/kernel/*.h)
 OBJS = $(patsubst $(SRC)/kernel/%.c,$(BUILD)/%.o,$(C_SOURCES)) $(patsubst $(SRC)/kernel/%.asm,$(BUILD)/%.o,$(ASM_SOURCES))
-CFLAGS = -std=gnu17 -g -m32 -mgeneral-regs-only -ffreestanding -Wall -Wextra
+CFLAGS = -std=gnu17 -g -m32 -mgeneral-regs-only -mno-red-zone -ffreestanding -Wall -Wextra
 SFLAGS = -g
 
 
