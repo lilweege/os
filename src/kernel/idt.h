@@ -1,8 +1,8 @@
 #ifndef IDT_H_
 #define IDT_H_
 
-#include "extra/idt.h"
 #include "types.h"
+
 #define NUM_IDT_ENTRIES 256
 #define INT_GATE_FLAGS  0b10001110
 #define TRAP_GATE_FLAGS 0b10001111

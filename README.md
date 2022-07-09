@@ -8,5 +8,6 @@ A toy 32-bit operating system for x86
 - https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf
 - https://github.com/cfenollosa/os-tutorial
 - TODO: link youtube tutorials
+- TODO: link intel manuals
 
 TODO: add a license
