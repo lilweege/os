@@ -1,7 +1,5 @@
 extern _start
 bits 32
-loop:
+entry: ; loaded at 0x7E00
     call _start
-    ; unreachable unless the kernel returns (it probably shouldn't)
-    ; jmp loop
-    jmp $
+    jmp $ ; unreachable unless the kernel returns (it shouldn't)
