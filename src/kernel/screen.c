@@ -2,8 +2,8 @@
 #include "ports.h"
 #include "util.h"
 
-u8 _sbuff[2][SCREEN_SIZE];
-u8 _sbuff_front = 0;
+u8 g_sbuff[2][SCREEN_SIZE];
+u8 g_sbuff_front = 0;
 
 #define VGA_OFFSET     ((u8*)0xA0000)
 #define PALETTE_MASK   0x3C6
@@ -26,9 +26,13 @@ static void screen_configure_palette(void) {
     outb(PALETTE_DATA, 0x3F);
 }
 
+void screen_fill(u8 col) {
+    memset(g_sbuff[g_sbuff_front], col, SCREEN_SIZE);
+}
+
 void screen_swap_buffers(void) {
-    memcpy(VGA_OFFSET, &_sbuff[_sbuff_front], SCREEN_SIZE);
-    _sbuff_front ^= 1;
+    memcpy(VGA_OFFSET, &g_sbuff[g_sbuff_front], SCREEN_SIZE);
+    g_sbuff_front ^= 1;
 }
 
 void screen_init(void) {

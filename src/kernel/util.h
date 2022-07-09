@@ -6,5 +6,6 @@
 void memcpy(void* dst, const void* src, i32 n);
 void memset(void* s, u8 c, size_t n);
 void itoa(i32 x, char* s);
+void htoa(u32 x, char* s);
 
 #endif // UTIL_H_

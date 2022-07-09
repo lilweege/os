@@ -24,8 +24,8 @@ typedef struct {
     uintptr_t base;
 } __attribute__((packed)) idt_register_t;
 
-extern idt_entry_t idt[NUM_IDT_ENTRIES];
-extern idt_register_t idrt;
+extern idt_entry_t g_idt[NUM_IDT_ENTRIES];
+extern idt_register_t g_idrt;
 
 void idt_load(void);
 void idt_set_entry(u8 vector, void* isr, u8 flags);

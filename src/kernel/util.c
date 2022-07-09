@@ -15,7 +15,7 @@ void memset(void* s, u8 c, size_t n) {
 }
 
 void itoa(i32 x, char* s) {
-    const int sz = 32;
+    const u8 sz = 32;
     char buf[sz];
     u8 i = sz-1;
     u8 neg = x < 0;
@@ -25,6 +25,23 @@ void itoa(i32 x, char* s) {
     } while (x /= 10);
     if (neg)
         buf[i--] = '-';
+    ++i;
+    s[sz-i] = 0;
+    memcpy(s, buf+i, sz-i);
+}
+
+void htoa(u32 x, char* s) {
+    const u8 sz = 32;
+    char buf[sz];
+    u8 i = sz-1;
+    do {
+        u8 lo = (x & 0x0F);
+        u8 hi = (x & 0xF0) >> 4;
+        buf[i--] = lo < 10 ? (lo+'0') : (lo-10+'A');
+        buf[i--] = hi < 10 ? (hi+'0') : (hi-10+'A');
+    } while (x >>= 8);
+    buf[i--] = 'x';
+    buf[i--] = '0';
     ++i;
     s[sz-i] = 0;
     memcpy(s, buf+i, sz-i);

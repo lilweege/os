@@ -16,12 +16,9 @@
 
 #define IRQ_FREQ    100
 
-u32 tick = 0;
+u32 g_tick = 0;
 static void timer_handler(void) {
-    ++tick;
-    u16 x=0,y=0;
-    print_num(&x, &y, tick);
-    screen_swap_buffers();
+    ++g_tick;
 }
 
 void timer_init(void) {
