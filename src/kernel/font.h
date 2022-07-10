@@ -9,7 +9,7 @@ void draw_char(u32 x, u32 y, u8 c);
 
 #define ASCII_PRINTABLE_MIN   (' ')
 #define ASCII_PRINTABLE_MAX   ('~')
-#define ASCII_PRINTABLE_COUNT (ASCII_PRINTABLE_MAX - ASCII_PRINTABLE_MAX - 1)
+#define ASCII_PRINTABLE_COUNT (ASCII_PRINTABLE_MAX - ASCII_PRINTABLE_MIN - 1)
 
 static const u32 FontCharWidth = 8;
 static const u32 FontCharHeight = 16;
