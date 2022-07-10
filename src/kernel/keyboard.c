@@ -2,8 +2,6 @@
 
 #include "isr.h"
 #include "ports.h"
-#include "print.h"
-#include "screen.h"
 
 
 u8 g_kbmods;
