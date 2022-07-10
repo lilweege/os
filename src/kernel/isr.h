@@ -3,6 +3,7 @@
 
 #include "types.h"
 
+
 typedef struct {
     u32 err;
     u32 eip;
@@ -21,7 +22,7 @@ typedef struct {
 } __attribute__((packed)) int_frame_t;
 
 
-typedef void(*isr_t)(void);
+typedef void (*isr_t)(void);
 
 void irq_install(u32 n, isr_t handler);
 void isr_init(void);

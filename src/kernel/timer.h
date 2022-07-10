@@ -3,6 +3,7 @@
 
 #include "types.h"
 
+
 extern u32 g_tick;
 
 void timer_init(void);

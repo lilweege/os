@@ -1,6 +1,8 @@
 #include "print.h"
+
 #include "font.h"
 #include "util.h"
+
 
 void print_cstr(u16* x, u16* y, const char* s) {
     // TODO: edge wrapping

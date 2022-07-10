@@ -1,8 +1,9 @@
-#include "keyboard.h"
-#include "screen.h"
 #include "isr.h"
-#include "timer.h"
+#include "keyboard.h"
 #include "main.h"
+#include "screen.h"
+#include "timer.h"
+
 
 void _start(void) {
     screen_init();

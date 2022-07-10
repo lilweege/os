@@ -1,17 +1,19 @@
 #ifndef FONT_H_
 #define FONT_H_
 
-#include "util.h"
 #include "screen.h"
+#include "util.h"
+
+
 void draw_char(u32 x, u32 y, u8 c);
 
-
-#define ASCII_PRINTABLE_MIN (' ')
-#define ASCII_PRINTABLE_MAX ('~')
-#define ASCII_PRINTABLE_COUNT (ASCII_PRINTABLE_MAX-ASCII_PRINTABLE_MAX-1)
+#define ASCII_PRINTABLE_MIN   (' ')
+#define ASCII_PRINTABLE_MAX   ('~')
+#define ASCII_PRINTABLE_COUNT (ASCII_PRINTABLE_MAX - ASCII_PRINTABLE_MAX - 1)
 
 static const u32 FontCharWidth = 8;
 static const u32 FontCharHeight = 16;
+// clang-format off
 static const u8 FontBitmap[] = {
     0b00000000,
     0b00000000,
@@ -1628,5 +1630,6 @@ static const u8 FontBitmap[] = {
     0b00000000,
     0b00000000,
 };
+// clang-format on
 
 #endif // FONT_H_

@@ -1,15 +1,17 @@
 #include "screen.h"
+
 #include "ports.h"
 #include "util.h"
+
 
 u8 g_sbuff[2][SCREEN_SIZE];
 u8 g_sbuff_front = 0;
 
-#define VGA_OFFSET     ((u8*)0xA0000)
-#define PALETTE_MASK   0x3C6
-#define PALETTE_READ   0x3C7
-#define PALETTE_WRITE  0x3C8
-#define PALETTE_DATA   0x3C9
+#define VGA_OFFSET    ((u8*) 0xA0000)
+#define PALETTE_MASK  0x3C6
+#define PALETTE_READ  0x3C7
+#define PALETTE_WRITE 0x3C8
+#define PALETTE_DATA  0x3C9
 
 static void screen_configure_palette(void) {
     // 8-bit RRRGGGBB color
