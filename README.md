@@ -5,7 +5,7 @@ A toy 32-bit operating system for x86
 ## Quick Start
 Requirements:
 - GNU coreutils (`make`, `cat`, `dd`)
-- GNU gcc for i386 (`i386-elf-gcc`)
+- GNU gcc for i386 (`i386-elf-gcc`, `i386-elf-ld`)
 - NASM (`nasm`)
 - QEMU (`qemu-system-i386`)
 
