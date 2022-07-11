@@ -2,17 +2,21 @@
 
 #include "isr.h"
 #include "ports.h"
+#include "screen.h"
 
+
+u8 g_mbtn;
+i32 g_mx, g_my;
 
 typedef struct {
-    u8 yOverflow : 1;
-    u8 xOverflow : 1;
-    u8 ySign     : 1;
-    u8 xSign     : 1;
-    u8 one       : 1;
-    u8 middleBtn : 1;
-    u8 rightBtn  : 1;
     u8 leftBtn   : 1;
+    u8 rightBtn  : 1;
+    u8 middleBtn : 1;
+    u8 one       : 1;
+    u8 xSign     : 1;
+    u8 ySign     : 1;
+    u8 xOverflow : 1;
+    u8 yOverflow : 1;
 } MousePacketInfo;
 
 typedef struct {
@@ -51,7 +55,29 @@ static u8 mouse_read() {
 }
 
 static void mouse_handle_packet(MousePacket packet) {
-    // TODO
+    if (!packet.info.one || packet.info.yOverflow || packet.info.xOverflow)
+        return; // the packet is probably bad
+
+    g_mbtn = 0;
+    if (packet.info.leftBtn)
+        g_mbtn |= MOUSE_BTN_LEFT;
+    if (packet.info.rightBtn)
+        g_mbtn |= MOUSE_BTN_RIGHT;
+    if (packet.info.middleBtn)
+        g_mbtn |= MOUSE_BTN_MIDDLE;
+
+    g_mx += packet.info.xSign ? -((i32) 0xFF - packet.xMovement) : packet.xMovement;
+    g_my += packet.info.ySign ? 0xFF - packet.yMovement : -((i32) packet.yMovement);
+
+    if (g_mx < 0)
+        g_mx = 0;
+    if (g_mx > SCREEN_WIDTH - 1)
+        g_mx = SCREEN_WIDTH - 1;
+
+    if (g_my < 0)
+        g_my = 0;
+    if (g_my > SCREEN_HEIGHT - 1)
+        g_my = SCREEN_HEIGHT - 1;
 }
 
 static void mouse_handler() {

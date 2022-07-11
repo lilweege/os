@@ -11,6 +11,8 @@
 extern u8 g_sbuff[2][SCREEN_SIZE];
 extern u8 g_sbuff_front;
 
+void screen_draw_bitmap(const u16* buff, u16 x, u16 y, u16 width, u16 height);
+void screen_draw_bitmap_mono(const u8* buff, u16 x, u16 y, u16 width, u16 height);
 void screen_fill(u8 col);
 void screen_swap_buffers(void);
 void screen_init(void);

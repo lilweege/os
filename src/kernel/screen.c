@@ -28,6 +28,37 @@ static void screen_configure_palette(void) {
     outb(PALETTE_DATA, 0x3F);
 }
 
+void screen_draw_bitmap(const u16* buff, u16 x, u16 y, u16 width, u16 height) {
+    for (u32 i = 0; i < height; ++i) {
+        for (u32 j = 0; j < width; ++j) {
+            u8 yes = (buff[i * width + j] & 0xFF00) != 0;
+            if (yes) {
+                u8 col = buff[i * width + j] & 0xFF;
+                u16 sx = x + j;
+                u16 sy = y + i;
+                if (0 <= sx && sx < SCREEN_WIDTH && 0 <= sy && sy < SCREEN_HEIGHT)
+                    screen_set_px(sx, sy, col);
+            }
+        }
+    }
+}
+
+void screen_draw_bitmap_mono(const u8* buff, u16 x, u16 y, u16 width, u16 height) {
+    for (u32 i = 0; i < height; ++i) {
+        for (u32 j = 0; j < width / 8; ++j) {
+            u8 b = buff[i * width / 8 + j];
+            for (u32 s = 0; s < 8; ++s) {
+                if (b & (1U << (7 - s))) {
+                    u16 sx = x + j * 8 + s;
+                    u16 sy = y + i;
+                    if (0 <= sx && sx < SCREEN_WIDTH && 0 <= sy && sy < SCREEN_HEIGHT)
+                        screen_set_px(sx, sy, 0xFF);
+                }
+            }
+        }
+    }
+}
+
 void screen_fill(u8 col) {
     memset(g_sbuff[g_sbuff_front], col, SCREEN_SIZE);
 }
