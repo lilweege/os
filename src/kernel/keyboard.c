@@ -38,7 +38,8 @@ u8 us_qwerty[2][128] = {
 };
 // clang-format on
 
-static void keyboard_handler(void) {
+static void keyboard_handler(registers_t registers) {
+    (void) registers;
     u8 key = inb(0x60);
     u8 pressed = SCANCODE_PRESSED(key);
     u8 scancode = KEY_SCANCODE(key);

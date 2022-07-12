@@ -17,7 +17,8 @@
 #define IRQ_FREQ 100
 
 u32 g_tick = 0;
-static void timer_handler(void) {
+static void timer_handler(registers_t registers) {
+    (void) registers;
     ++g_tick;
 }
 

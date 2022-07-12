@@ -28,14 +28,14 @@ typedef struct {
     u8 yMovement;
 } MousePacket;
 
-static void mouse_wait() {
+static void mouse_wait(void) {
     for (u32 timeout = 100000; --timeout;) {
         if ((inb(0x64) & 0b10) == 0)
             return;
     }
 }
 
-static void mouse_wait_input() {
+static void mouse_wait_input(void) {
     for (u32 timeout = 100000; --timeout;) {
         if ((inb(0x64) & 0b01) != 0)
             return;
@@ -49,7 +49,7 @@ static void mouse_write(u8 val) {
     outb(0x60, val);
 }
 
-static u8 mouse_read() {
+static u8 mouse_read(void) {
     mouse_wait_input();
     return inb(0x60);
 }
@@ -80,7 +80,8 @@ static void mouse_handle_packet(MousePacket packet) {
         g_my = SCREEN_HEIGHT - 1;
 }
 
-static void mouse_handler() {
+static void mouse_handler(registers_t registers) {
+    (void) registers;
     static u8 mouseCycle = 0;
     static MousePacket packet;
 
