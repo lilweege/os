@@ -6,7 +6,7 @@ ASM_SOURCES = $(wildcard $(SRC)/kernel/*.asm)
 C_SOURCES = $(wildcard $(SRC)/kernel/*.c)
 HEADERS = $(wildcard $(SRC)/kernel/*.h)
 OBJS = $(patsubst $(SRC)/kernel/%.c,$(BUILD)/%.o,$(C_SOURCES)) $(patsubst $(SRC)/kernel/%.asm,$(BUILD)/%.o,$(ASM_SOURCES))
-CCFLAGS = -std=gnu11 -g -m32 -mgeneral-regs-only -mno-red-zone -fno-stack-protector -fno-pie \
+CCFLAGS = -std=gnu11 -g -m32 -mno-red-zone -fno-stack-protector -fno-pie \
 		 -ffreestanding -fno-builtin -nostdlib -nostdinc -nodefaultlibs \
 		 -Wall -Wextra -Werror
 ASFLAGS = -g
