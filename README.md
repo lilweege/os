@@ -1,6 +1,15 @@
 # os
 
-A toy 32-bit operating system for x86
+A toy 32-bit operating system for x86. No shell, no filesystem, no scheduling; just an excercise in x86 with a spinning teapot.
+
+![A wireframe teapot](./teapot.png)
+
+
+## Features
+- 32-bit
+- 320x200 8-bit color
+- PS/2 keyboard and mouse
+
 
 ## Quick Start
 Requirements:
@@ -26,7 +35,7 @@ $ make run
 ##### Notable YouTube videos/playlists
 - jdh - tetris-os: https://www.youtube.com/watch?v=FaILnmUYS_U
 - Andreas Kling - SerenityOS: https://www.youtube.com/playlist?list=PLMOpZvQB55bczV5_3DxTLDm37v_F6iCKA
-- Poncho:
+- Poncho -
     - OS Dev: https://www.youtube.com/playlist?list=PLxN4E629pPnKKqYsNVXpmCza8l0Jb6l8-
     - OS Dev - S2: https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
 - nanobyte - Building an OS: https://www.youtube.com/playlist?list=PLFjM7v6KGMpiH2G-kT781ByCNC_0pKpPN
