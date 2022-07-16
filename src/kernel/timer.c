@@ -14,7 +14,7 @@
 
 #define PIT_SET  0x36
 #define PIT_HZ   1193181
-#define IRQ_FREQ 100
+#define IRQ_FREQ 1000
 
 u32 g_tick = 0;
 static void timer_handler(registers_t registers) {
