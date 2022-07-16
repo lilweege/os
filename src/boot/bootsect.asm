@@ -16,7 +16,7 @@ bits 16
     
     ; set video mode
     mov ah, 0x00 ; set video mode
-    mov al, 0x13 ; 320x200 16 col
+    mov al, 0x13 ; 320x200 256 col
     int 0x10
 
     ; set the A20 line
