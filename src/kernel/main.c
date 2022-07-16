@@ -56,7 +56,7 @@ static void update(u32 dt) {
     screen_swap_buffers();
 }
 
-void main(void) {
+void kmain(void) {
     u32 lastTick = 0;
     while (1) {
         // TODO: throttling

@@ -13,5 +13,5 @@ void _start(void) {
     keyboard_init(); // irq1
     mouse_init();    // irq12
 
-    main();
+    kmain();
 }
